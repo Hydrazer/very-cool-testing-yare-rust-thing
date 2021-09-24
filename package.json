@@ -1,0 +1,29 @@
+{
+  "name": "yare-rust-template",
+  "version": "0.1.0",
+  "description": "Create yare bots with rust!",
+  "main": "bundle.js",
+  "scripts": {
+    "build": "yarn build:cargo && yarn build:converter",
+    "build:cargo": "cargo build --target wasm32-unknown-unknown --release",
+    "build:converter": "node scripts/converter > ./build/bundle.js",
+    "upload": "yarn build && node scripts/uploader",
+    "fmt": "cargo fmt && cargo clippy",
+    "postinstall": "rustup toolchain add nightly && rustup target add wasm32-unknown-unknown && rustup component add llvm-tools-preview && rustup update && cargo update"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swz-gh/yare-rust-template.git"
+  },
+  "author": "swz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swz-gh/yare-rust-template/issues"
+  },
+  "homepage": "https://github.com/swz-gh/yare-rust-template#readme",
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "yare-sync": "^2.0.0",
+    "yareio-wasm-gluer": "^0.1.3"
+  }
+}
